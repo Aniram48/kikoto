@@ -293,7 +293,7 @@ export default function App() {
         </div>
 
         {/* Jobb oldali zászlók */}
-        <nav className="absolute top-2 right-0 z-10 flex flex-col gap-2 scale-75 sm:scale-90 md:scale-100 origin-top-right">
+        <nav className="absolute top-24 right-0 z-10 flex flex-col gap-2 scale-75 sm:scale-90 md:scale-100 origin-top-right sm:top-2">
           {SECTIONS.slice(0, 4).map((s) => (
             <div
               key={s.id}
