@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar"
 import { Waves, Phone, Mail } from "lucide-react"
+import WaveStrip from '../components/WaveStrip'
 
 export default function Szorfozes() {
   return (
@@ -17,23 +18,24 @@ export default function Szorfozes() {
           <h1 className="  text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-tight">
             Tiszai szörfözés
           </h1>
+          <p className=" mt-5 text-slate-600 max-w-2xl mx-auto leading-relaxed">A szörfözéssel színesedhet a tiszai vízi sportélet!</p>
 
           
 
           <div className="mt-8 w-12 h-px bg-slate-400 mx-auto" />
         </div>
-         <img
+        <img
             src="/windsurf.png"
             alt="windserf"
             className="
-                      absolute
-                      right-2 sm:right-6 lg:right-16
-                      top-1/2 md:top-1/2 sm:top-2/3 top-3/4 -translate-y-1/2
-                      h-auto
-                      animate-boat
-                      pointer-events-none
-                      w-[clamp(140px,16vw,220px)]
-                    "
+              absolute
+              right-6 sm:right-10 lg:right-20
+              top-1/2 -translate-y-1/2
+              h-auto
+              animate-boat
+              pointer-events-none
+              w-[clamp(90px,10vw,150px)]
+            "
           />
       </div>
 
@@ -95,6 +97,9 @@ export default function Szorfozes() {
           </div>
         </div>
 
+      </div>
+      <div className="mt-auto">
+        <WaveStrip />
       </div>
     </div>
   )

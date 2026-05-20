@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { List, Anchor, Ship, Users, Navigation, FileDown, Play, CheckSquare, Trophy, ArrowLeft,
-  Phone, Mail, MapPin, MessageSquare, Shield
+  Phone, Mail, MapPin, MessageSquare, Shield, ChevronDown, ChevronUp
  } from "lucide-react"
 import Navbar from "../components/Navbar"
+import WaveStrip from '../components/WaveStrip'
 
 // ── Adatok ────────────────────────────────────────────────
 
@@ -66,6 +67,17 @@ const TABS = [
   { id: "tesztek",     label: "Tesztkérdések",          Icon: Trophy },
   { id: "bizonyitvany",label: "Bizonyítvány",    Icon: Ship },
   { id: "dokumentumok",label: "Dokumentumok",    Icon: FileDown },
+]
+
+const VIDEO_GROUPS = [
+  {
+    title: "Kedvtelési célú IV. osztályú tengeri kishajó vezető tanfolyam – 1. rész",
+    videoId: "gpcxfyY9EWA",
+  },
+  {
+    title: "Kedvtelési célú IV. osztályú tengeri kishajó vezető tanfolyam – 2. rész",
+    videoId: "gpcxfyY9EWA",
+  },
 ]
 
 // ── Kisebb komponensek ─────────────────────────────────────
@@ -134,6 +146,35 @@ function DijTablazat() {
     </div>
   )
 }
+function VideoAccordion({ group }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div className="bg-white border border-slate-200 rounded-xl mb-2 overflow-hidden w-full">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+      >
+        <Play className="w-4 h-4 text-slate-400 flex-shrink-0" />
+        <span className="flex-1 text-sm font-medium text-slate-800">{group.title}</span>
+        {open ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+      </button>
+
+      {open && (
+        <div className="border-t border-slate-100 p-4">
+          <div className="w-full aspect-video rounded-xl overflow-hidden">
+            <iframe
+              src={`https://www.youtube.com/embed/${group.videoId}`}
+              title={group.title}
+              className="w-full h-full"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
 
 // ── Fő oldal ──────────────────────────────────────────────
 
@@ -144,7 +185,7 @@ export default function TengeriKepzes() {
   const [activeTab, setActiveTab] = useState("tajekoztato")
 
   return (
-    <div className="min-h-screen bg-slate-300 text-slate-950 pt-16">
+    <div className="min-h-screen bg-slate-300 text-slate-950 pt-16 flex flex-col">
       <Navbar />
 
       {/* HERO */}
@@ -189,7 +230,7 @@ export default function TengeriKepzes() {
       </div>
 
       {/* TARTALOM */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20 flex-1 w-full">
 
         {/* TÁJÉKOZTATÓ */}
         {activeTab === "tajekoztato" && (
@@ -291,14 +332,10 @@ Részletes tájékoztató megtalálható a tájékoztató menüpontban.
 
             {/* Oktató videók */}
             <div>
-              <SectionLabel>Oktató videók (2 db)</SectionLabel>
-              <div className="bg-white border border-slate-200 rounded-xl px-4 py-3 flex items-center gap-3">
-                <Play className="w-4 h-4 text-slate-400" />
-                <span className="text-sm text-slate-700">Tengeri IV. osztályú kishajós képzés oktató videók</span>
-                {/* ha van href, tegyél ide linket */}
-              </div>
+              <SectionLabel>Oktató videók</SectionLabel>
+              {VIDEO_GROUPS.map((g, i) => <VideoAccordion key={i} group={g} />)}
             </div>
-          </div>
+            </div>
         )}
 
         {/* FELTÉTELEK */}
@@ -383,6 +420,9 @@ Részletes tájékoztató megtalálható a tájékoztató menüpontban.
           </div>
         )}
 
+      </div>
+      <div className="mt-auto">
+        <WaveStrip />
       </div>
     </div>
   )

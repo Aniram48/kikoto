@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Navbar from "../components/Navbar"
 import { Anchor, Sailboat, Ship } from "lucide-react"
+import WaveStrip from '../components/WaveStrip'
 
 const BOATS = [
   {
@@ -183,6 +184,9 @@ export default function Berles() {
           +36 30 978 6313
         </a>
       </div>
+      <div className="mt-auto">
+              <WaveStrip />
+            </div>
     </div>
   )
 }

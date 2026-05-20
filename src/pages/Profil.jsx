@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import Wave from '../components/Wave'
 import Navbar from '../components/Navbar'
 import { User, Mail, LogOut } from 'lucide-react'
+import WaveStrip from '../components/WaveStrip'
 
 export default function Profil() {
   const navigate = useNavigate()
@@ -89,6 +90,10 @@ export default function Profil() {
 
         </div>
       </div>
+      
+          <div className="mt-auto">
+            <WaveStrip />
+          </div>
     </div>
   )
 }

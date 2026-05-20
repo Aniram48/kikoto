@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar"
 import WitchAnimation from "../components/WitchAnimation"
 import { Anchor } from "lucide-react"
+import WaveStrip from '../components/WaveStrip'
 
 function AppButton({ children, href = "#" }) {
   return (
@@ -127,12 +128,9 @@ export default function Termekek() {
           </div>
         </div>
       </div>
-
-      <footer className="bg-deepnavy text-sail/60 py-5 text-center">
-        <p className=" text-[10px] tracking-widest uppercase">
-          © 2026 Szegedi Vitorláskikötő
-        </p>
-      </footer>
+           <div className="mt-auto">
+            <WaveStrip />
+          </div>
     </div>
   )
 }

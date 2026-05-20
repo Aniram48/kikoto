@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Waves } from "lucide-react"
 import Navbar from "../components/Navbar"
+import WaveStrip from '../components/WaveStrip'
 
 const sections = [
     {
@@ -270,7 +271,7 @@ export default function Kurzus() {
 
   return (
     <div className=" min-h-screen bg-slate-300 text-slate-950 pt-16">
-<Navbar />
+      <Navbar />
       {/* HERO */}
       <div className=" relative bg-slate-100 border-b border-slate-900/10 overflow-hidden ">
         <div className="max-w-4xl mx-auto px-6 pt-14 pb-14 text-center">
@@ -285,25 +286,30 @@ export default function Kurzus() {
           </h1>
 
           <p className=" mt-5 text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Vitorlázás és vízi sportok alapjai elméletben és gyakorlatban a Tisza közegében.
+             <span className="block sm:inline">
+                Vitorlázás és vízi sportok alapjai
+              </span>
+              <span className="block sm:inline">
+                elméletben és gyakorlatban a Tisza közegében.
+              </span>
           </p>
 
           <div className="mt-8 w-12 h-px bg-slate-400 mx-auto" />
         </div>
-         <img
-  src="/boat.png"
-  alt="boat"
-className="
-  absolute
-  right-0 md:right-10 lg:right-40
-  bottom-0
-  w-20 md:w-24 lg:w-32 [@media(min-width:1354px)]:w-40 xl:w-44
-  h-auto
-  animate-boat
-  pointer-events-none
-  opacity-90
-"
-/>
+        <img
+          src="/boat.png"
+          alt="boat"
+        className="
+          absolute
+          right-0 md:right-4 lg:right-24 xl:right-44
+          -bottom-4 md:-bottom-6
+          w-20 md:w-20 lg:w-28 xl:w-44
+          h-auto
+          animate-boat
+          pointer-events-none
+          opacity-90
+        "
+        />
           
       </div>
 
@@ -348,7 +354,7 @@ className="
         </div>
       )}
 
-    {activeSection?.facebook && (
+      {activeSection?.facebook && (
       <div className="max-w-4xl mx-auto px-6 mb-12">
         <div className="bg-slate-50 border border-slate-900/10 rounded-2xl p-6 text-center shadow">
 
@@ -372,8 +378,10 @@ className="
 
         </div>
       </div>
-    )}
-
+      )}
+        <div className="mt-auto">
+          <WaveStrip />
+        </div>
     </div>
   )
 }

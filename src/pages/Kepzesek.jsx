@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { Anchor, Ship, Briefcase, ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import WaveStrip from '../components/WaveStrip'
 
 const kepzesek = [
   {
@@ -106,6 +107,9 @@ export default function Kepzesek() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="mt-auto">
+        <WaveStrip />
       </div>
     </div>
   )

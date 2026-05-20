@@ -6,6 +6,7 @@ import {
   Volume2, FlaskConical, HeartPulse, Globe, Calendar, ArrowRight,
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import WaveStrip from '../components/WaveStrip'
 
 // ─── adatok ──────────────────────────────────────────────────────────────────
 
@@ -755,6 +756,9 @@ export default function Hajoskonyv() {
           </div>
         )}
       </div>
+      <div className="mt-auto">
+              <WaveStrip />
+            </div>
     </div>
   )
 }

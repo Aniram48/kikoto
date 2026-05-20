@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar"
 import { Anchor, UserPlus, LogIn, PlayCircle, FileText, ChevronDown } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import WaveStrip from '../components/WaveStrip'
 
 export default function CsónakvezetesSzabalyai() {
   const navigate = useNavigate()
@@ -190,6 +191,10 @@ export default function CsónakvezetesSzabalyai() {
         </div>
 
       </div>
+      
+        <div className="mt-auto">
+          <WaveStrip />
+        </div>
     </div>
   )
 }

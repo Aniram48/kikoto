@@ -1,16 +1,16 @@
 import { useState } from "react"
 import {
-  List,
-  Anchor,
-  Ship,
+  List, Anchor, Ship,
   Users,
   Navigation,
   FileDown,
   Play,
   CheckSquare,
   Trophy, Briefcase,
-  ArrowLeft, Phone, Mail, MapPin 
+  ArrowLeft, Phone, Mail, MapPin,
+  ChevronDown, ChevronUp
 } from "lucide-react"
+import WaveStrip from '../components/WaveStrip'
 
 import Navbar from "../components/Navbar"
 
@@ -68,6 +68,24 @@ const TABS = [
   { id: "dokumentumok", label: "Dokumentumok", Icon: FileDown },
 ]
 
+const VIDEO_GROUPS = [
+  {
+    title: "I. RÉSZ - ÁLTALÁNOS BELVÍZI HAJÓZÁSI SZABÁLYOK",
+    videoId: "gpcxfyY9EWA",
+    chapters: [],
+  },
+  {
+    title: "II. RÉSZ - MAGYARORSZÁG TERÜLETÉN LÉVŐ BELVÍZI UTAKRA VONATKOZÓ KIEGÉSZÍTŐ RENDELKEZÉSEK",
+    videoId: "gpcxfyY9EWA",
+    chapters: [],
+  },
+  {
+    title: "ELSŐSEGÉLYNYÚJTÁS VIZSGAKÉRDÉSEK",
+    videoId: "gpcxfyY9EWA",
+    chapters: [],
+  },
+]
+
 // ── Kisebb komponensek ─────────────────────────────────────
 
 function SectionLabel({ children }) {
@@ -101,6 +119,36 @@ function TestRow({ item, navigate }) {
       >
         Kezdés
       </button>
+    </div>
+  )
+}
+
+function VideoAccordion({ group }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div className="bg-white border border-slate-200 rounded-xl mb-2 overflow-hidden w-full">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+      >
+        <Play className="w-4 h-4 text-slate-400 flex-shrink-0" />
+        <span className="flex-1 text-sm font-medium text-slate-800">{group.title}</span>
+        {open ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+      </button>
+
+      {open && (
+        <div className="border-t border-slate-100 p-4">
+          <div className="w-full aspect-video rounded-xl overflow-hidden">
+            <iframe
+              src={`https://www.youtube.com/embed/${group.videoId}`}
+              title={group.title}
+              className="w-full h-full"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -139,7 +187,7 @@ export default function SzolgalatiKepzes() {
   const [activeTab, setActiveTab] = useState("tajekoztato")
 
   return (
-    <div className="min-h-screen bg-slate-300 text-slate-950 pt-16">
+    <div className="min-h-screen bg-slate-300 text-slate-950 pt-16 flex flex-col">
       <Navbar />
 
       {/* HERO */}
@@ -184,7 +232,7 @@ export default function SzolgalatiKepzes() {
       </div>
 
       {/* TARTALOM */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20 flex-1 w-full">
 
         {/* TÁJÉKOZTATÓ */}
         {activeTab === "tajekoztato" && (
@@ -245,15 +293,8 @@ export default function SzolgalatiKepzes() {
 
         {/* VIDEÓK */}
         {activeTab === "videok" && (
-          <div className="space-y-6">
-            
-            <div>
-              <SectionLabel>Oktató videók</SectionLabel>
-              <div className="bg-white border border-slate-200 rounded-xl px-4 py-3 flex items-center gap-3">
-                <Play className="w-4 h-4 text-slate-400" />
-                <span className="text-sm text-slate-700">Szolgálati, kereseti célú oktató videók (25 db videó)</span>
-              </div>
-            </div>
+          <div className="w-full">
+            {VIDEO_GROUPS.map((g, i) => <VideoAccordion key={i} group={g} />)}
           </div>
         )}
 
@@ -321,7 +362,10 @@ export default function SzolgalatiKepzes() {
           </div>
         )}
 
-      </div>
+        </div>
+        <div className="mt-auto">
+          <WaveStrip />
+        </div>
     </div>
   )
 }

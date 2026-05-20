@@ -7,6 +7,7 @@ import {
 } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
+import WaveStrip from '../components/WaveStrip'
 
 
 // ── Adatok ────────────────────────────────────────────────
@@ -150,7 +151,7 @@ function VideoAccordion({ group }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl mb-2 overflow-hidden">
+    <div className="bg-white border border-slate-200 rounded-xl mb-2 overflow-hidden ">
       
       {/* HEADER */}
       <button
@@ -310,7 +311,7 @@ export default function KishajoKepzes() {
   const allDone = doneCount === totalInternal
 
   return (
-    <div className="min-h-screen bg-slate-300 text-slate-950 pt-16">
+    <div className="min-h-screen bg-slate-300 text-slate-950 pt-16 flex flex-col">
       <Navbar />
 
       {/* Fejléc */}
@@ -355,7 +356,7 @@ export default function KishajoKepzes() {
       </div>
 
       {/* Tartalom */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20 flex-1 w-full">
 
         {/* TANFOLYAM MENETE */}
         {activeTab === "menet" && (
@@ -512,6 +513,9 @@ export default function KishajoKepzes() {
             </div>
           )}
 
+      </div>
+      <div className="mt-auto">
+        <WaveStrip />
       </div>
     </div>
   )
