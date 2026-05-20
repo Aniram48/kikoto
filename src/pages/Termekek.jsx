@@ -4,9 +4,9 @@ import { Anchor } from "lucide-react"
 
 function AppButton({ children, href = "#" }) {
   return (
-    <a href={href} className="block bg-navy text-white text-[11px]  font-semibold tracking-widest uppercase px-4 py-2 rounded-lg hover:bg-navy transition">
+    <div className="block bg-navy text-white text-[11px]  font-semibold tracking-widest uppercase px-4 py-2 rounded-lg hover:bg-navy transition">
       {children}
-    </a>
+    </div>
   )
 }
 
@@ -30,7 +30,7 @@ export default function Termekek() {
       <Navbar />
 
       {/* HERO */}
-      <div className="relative bg-sail border-b border-navy/10 overflow-hidden">
+      <div className="relative bg-slate-100 border-b border-navy/10 overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 pt-12 pb-14 text-center relative">
           <div className="inline-flex items-center gap-2 text-xs  font-semibold tracking-[0.3em] text-water uppercase mb-5">
             <Anchor className="w-4 h-4 opacity-70" />
