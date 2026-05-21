@@ -316,17 +316,15 @@ export default function TengeriKepzes() {
               <p>
                 
                Azok akik már regisztráltak az oldalra, (sportcélú, vagy kompetencia vizsga, vagy szolgálati, kereseti célú vizsga kapcsán), nekik <span className="font-semibold">nem kell mégegyszer regisztrálni</span>, csupán jelezni, hogy szeretnének foglalkozni a tengeri IV. osztályú kishajós vizsgára felkészüléssel.
-A számítógépes tesztvizsgák időpontjai a havonta meghirdetett KAV kishajós vizsgaidőpontjai szerinti ütemezésben választhatók.
-( Budapesten, Győrött, Siófokon, Mohácson, Szegeden, Miskolcon )
-A vizsgára jelentkezés minimum  5 munkanappal a vizsga előtt esedékes.
-Részletes tájékoztató megtalálható a tájékoztató menüpontban.
-Érdeklődés esetén letölthető a tervezett megállapodás, melynek E-mailben történő megküldése után az oktató videót elérhetővé teszem számodra, így az elméleti felkészülés már azonnal elkezdhető.
+              A számítógépes tesztvizsgák időpontjai a havonta meghirdetett KAV kishajós vizsgaidőpontjai szerinti ütemezésben választhatók.
+              ( Budapesten, Győrött, Siófokon, Mohácson, Szegeden, Miskolcon )
+              A vizsgára jelentkezés minimum  5 munkanappal a vizsga előtt esedékes.
+              Részletes tájékoztató megtalálható a tájékoztató menüpontban.
+              Érdeklődés esetén letölthető a tervezett megállapodás, melynek E-mailben történő megküldése után az oktató videót elérhetővé teszem számodra, így az elméleti felkészülés már azonnal elkezdhető.
+                            
               </p>
               <p>
                 A vizsgára jelentkezés minimum <span className="font-semibold">5 munkanappal</span> a vizsga előtt esedékes.
-              </p>
-              <p>
-                {/* ide: "Azok akik már regisztráltak..." bekezdés */}
               </p>
             </div>
 

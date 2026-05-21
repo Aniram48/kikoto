@@ -31,7 +31,6 @@ const STEPS = [
   { title: "Gyakorlati vizsga",              desc: "A Tiszán, időjárástól függő ütemezésben",                internal: true },
 ]
 
-
 const VIDEO_GROUPS = [
   {
     title: "Hajózási szabályzat – I. rész",
@@ -109,13 +108,6 @@ const PROBA = [
   { title: "Vitorlás kishajó – Próba vizsga",    sub: "20 véletlenszerű kérdés", route: "/probavizsga/vitorlas" },
 ]
 
-const NAPLO_CARDS = [
-  { title: "Hajózási szabályzat", desc: "536 kérdés · 0% teljesítve" },
-  { title: "Kisgéphajó",          desc: "326 kérdés · 0% teljesítve" },
-  { title: "Vitorlás kishajó",    desc: "416 kérdés · 0% teljesítve" },
-  { title: "Próba vizsgák",       desc: "Eredmények időrendben" },
-]
-
 const DOCS = [
   { label: "Vizsgaidőpontok 2026", href: "https://autoinfo.hu/szvk/wp-content/uploads/2026/01/vizsgarend_tervezet_2026.xls" },
   { label: "Megállapodás",         href: "https://autoinfo.hu/szvk/wp-content/uploads/2025/04/megallapodas_kishajos_kepzes_2025_03.doc" },
@@ -128,6 +120,19 @@ const DOCS = [
 // ── localStorage ──────────────────────────────────────────
 
 const LS_KEY = "kishajos_lepesek_kesz"
+const LS_PROGRESS = "kishajos_progress"
+
+function getProgress() {
+  try {
+    return JSON.parse(localStorage.getItem(LS_PROGRESS) || "{}")
+  } catch {
+    return {}
+  }
+}
+
+function saveProgress(data) {
+  localStorage.setItem(LS_PROGRESS, JSON.stringify(data))
+}
 
 function getCompleted() {
   try {
@@ -151,9 +156,7 @@ function VideoAccordion({ group }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl mb-2 overflow-hidden ">
-      
-      {/* HEADER */}
+    <div className="bg-white border border-slate-200 rounded-xl mb-2 overflow-hidden">
       <button
         onClick={() => setOpen(o => !o)}
         className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
@@ -169,13 +172,9 @@ function VideoAccordion({ group }) {
         )}
       </button>
 
-      {/* BODY */}
       {open && (
         <div className="border-t border-slate-100 p-4">
-          
           <div className="grid md:grid-cols-2 gap-4 items-start">
-            
-            {/* BAL OLDAL - fejezetek */}
             <ul className="space-y-1">
               {group.chapters.map((ch, i) => (
                 <li
@@ -186,8 +185,6 @@ function VideoAccordion({ group }) {
                 </li>
               ))}
             </ul>
-
-            {/* JOBB OLDAL - videó */}
             {group.videoId && (
               <div className="w-full flex justify-center">
                 <div className="w-full max-w-md aspect-video rounded-xl overflow-hidden">
@@ -200,7 +197,6 @@ function VideoAccordion({ group }) {
                 </div>
               </div>
             )}
-
           </div>
         </div>
       )}
@@ -232,8 +228,7 @@ function StepRow({ step, index, completed, navigate }) {
   const stepNum = index + 1
   const isInternal = step.internal
   const isDone = completed.includes(stepNum + 1)
-
-  const isDoneForFirst = false
+  const checkDone = index === 0 ? false : isDone
 
   function handleClick(e) {
     if (isInternal) {
@@ -242,12 +237,8 @@ function StepRow({ step, index, completed, navigate }) {
     }
   }
 
-  const checkDone = index === 0 ? isDoneForFirst : isDone
-
   return (
-     <div
-      className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3"
-    >
+    <div className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3">
       {checkDone ? (
         <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5">
           <CheckCircle2 className="w-6 h-6 text-emerald-500" />
@@ -277,21 +268,23 @@ function StepRow({ step, index, completed, navigate }) {
 // ── Fő oldal ──────────────────────────────────────────────
 
 const TABS = [
-  { id: "menet",  label: "Tájékoztató",      Icon: List },
-  { id: "videok", label: "Videók",           Icon: Play },
-  { id: "tesztek",label: "Tesztkérdések",    Icon: CheckSquare },
-  { id: "vizsga", label: "Próba vizsga",     Icon: Trophy },
-  { id: "naplo",  label: "Fejlődésnapló",    Icon: BarChart2 },
-  { id: "dok",    label: "Dokumentumok",     Icon: FileDown },
+  { id: "menet",  label: "Tájékoztató",   Icon: List },
+  { id: "videok", label: "Videók",         Icon: Play },
+  { id: "tesztek",label: "Tesztkérdések", Icon: CheckSquare },
+  { id: "vizsga", label: "Próba vizsga",  Icon: Trophy },
+  { id: "naplo",  label: "Fejlődésnapló", Icon: BarChart2 },
+  { id: "dok",    label: "Dokumentumok",  Icon: FileDown },
 ]
 
 export default function KishajoKepzes() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("menet")
   const [completed, setCompleted] = useState([])
+  const [progress, setProgress] = useState({})
 
   useEffect(() => {
     setCompleted(getCompleted())
+    setProgress(getProgress())
   }, [])
 
   useEffect(() => {
@@ -301,10 +294,21 @@ export default function KishajoKepzes() {
   }, [activeTab])
 
   useEffect(() => {
-    const refresh = () => setCompleted(getCompleted())
+    const refresh = () => {
+      setCompleted(getCompleted())
+      setProgress(getProgress())
+    }
     window.addEventListener("focus", refresh)
     return () => window.removeEventListener("focus", refresh)
   }, [])
+
+  // ← NAPLO_CARDS itt van, ahol a progress state már elérhető
+  const NAPLO_CARDS = [
+    { key: "szabalyzat", title: "Hajózási szabályzat" },
+    { key: "kisgephajo", title: "Kisgéphajó" },
+    { key: "vitorlas",   title: "Vitorlás kishajó" },
+    { key: "probavizsga", title: "Próba vizsgák", staticDesc: "Eredmények időrendben" },
+  ]
 
   const totalInternal = 7
   const doneCount = completed.filter(n => n >= 2 && n <= 8).length
@@ -326,7 +330,7 @@ export default function KishajoKepzes() {
             <Anchor className="w-4 h-4" /> Belvízi képzés
           </div>
           <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-slate-950 leading-tight">
-             Kishajós{' '}
+            Kishajós{' '}
             <span className="font-semibold italic text-water">képzés</span>
           </h1>
           <p className="mt-4 text-slate-600 max-w-xl text-base leading-relaxed">
@@ -386,6 +390,7 @@ export default function KishajoKepzes() {
                 ))}
               </div>
             </div>
+
             {/* DÍJAK */}
             <div>
               <SectionLabel>Díjak</SectionLabel>
@@ -486,32 +491,41 @@ export default function KishajoKepzes() {
         {activeTab === "naplo" && (
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {NAPLO_CARDS.map((c, i) => (
-                <div key={i} className="bg-white border border-slate-200 rounded-xl p-5">
-                  <BarChart2 className="w-5 h-5 mb-3 text-deepnavy" />
-                  <p className="text-sm font-semibold text-slate-800">{c.title}</p>
-                  <p className="text-xs text-slate-400 mt-1">{c.desc}</p>
-                </div>
-              ))}
+              {NAPLO_CARDS.map((c) => {
+                const p = progress[c.key]
+                return (
+                  <div key={c.key} className="bg-white border border-slate-200 rounded-xl p-5">
+                    <BarChart2 className="w-5 h-5 mb-3 text-deepnavy" />
+                    <p className="text-sm font-semibold text-slate-800">{c.title}</p>
+                    <p className="text-xs text-slate-400 mt-1">
+                      {c.staticDesc
+                        ? c.staticDesc
+                        : p
+                          ? `${p.answered} kérdés · ${p.lastScore}% helyes`
+                          : "0% teljesítve"}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         )}
 
         {/* DOKUMENTUMOK */}
-          {activeTab === "dok" && (
-            <div>
-              <SectionLabel>Letölthető dokumentumok</SectionLabel>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {DOCS.map((d, i) => (
-                  <a key={i} href={d.href} target="_blank" rel="noreferrer"
-                    className="group relative flex items-center gap-3 bg-slate-50 border border-slate-900/10 rounded-xl px-4 py-3 overflow-hidden hover:bg-slate-900 hover:border-slate-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
-                    <FileDown className="w-4 h-4 flex-shrink-0 text-deepnavy group-hover:text-accent transition-colors duration-300" />
-                    <span className="text-sm text-slate-700 group-hover:text-white transition-colors duration-300">{d.label}</span>
-                  </a>
-                ))}
-              </div>
+        {activeTab === "dok" && (
+          <div>
+            <SectionLabel>Letölthető dokumentumok</SectionLabel>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {DOCS.map((d, i) => (
+                <a key={i} href={d.href} target="_blank" rel="noreferrer"
+                  className="group relative flex items-center gap-3 bg-slate-50 border border-slate-900/10 rounded-xl px-4 py-3 overflow-hidden hover:bg-slate-900 hover:border-slate-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                  <FileDown className="w-4 h-4 flex-shrink-0 text-deepnavy group-hover:text-accent transition-colors duration-300" />
+                  <span className="text-sm text-slate-700 group-hover:text-white transition-colors duration-300">{d.label}</span>
+                </a>
+              ))}
             </div>
-          )}
+          </div>
+        )}
 
       </div>
       <div className="mt-auto">
