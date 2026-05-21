@@ -38,7 +38,7 @@ export default function UjJelszo() {
 
           <div className="bg-white border-2 border-water/30 rounded shadow-sm relative overflow-hidden">
 
-            {/* Wave – alul, mint a regisztrációnál */}
+            {/* Wave  */}
             <div className="absolute w-full z-0 bottom-0">
               <Wave height={45} />
             </div>

@@ -14,7 +14,7 @@ import WaveStrip from '../components/WaveStrip'
 
 import Navbar from "../components/Navbar"
 
-// ── Adatok ────────────────────────────────────────────────
+//  Adatok 
 
 const DOCS = [
   {
@@ -86,7 +86,7 @@ const VIDEO_GROUPS = [
   },
 ]
 
-// ── Kisebb komponensek ─────────────────────────────────────
+//  Kisebb komponensek 
 
 function SectionLabel({ children }) {
   return (
@@ -153,7 +153,7 @@ function VideoAccordion({ group }) {
   )
 }
 
-// ── Díjtáblázat ───────────────────────────────────────────
+//  Díjtáblázat 
 
 function DijTablazat() {
   return (
@@ -180,7 +180,7 @@ function DijTablazat() {
   )
 }
 
-// ── Fő komponens ──────────────────────────────────────────
+//  Fő komponens 
 
 export default function SzolgalatiKepzes() {
   const navigate = (route) => { window.location.href = route }

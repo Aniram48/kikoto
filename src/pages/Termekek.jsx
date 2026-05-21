@@ -50,7 +50,7 @@ export default function Termekek() {
 
       <div className="max-w-4xl mx-auto px-6 py-12 space-y-10">
 
-        {/* BLOKK 1 – BOSZORKÁNY KÖR */}
+        {/*  BOSZORKÁNY KÖR */}
         <div className="relative rounded-2xl border border-navy/10 bg-slate-100 overflow-hidden shadow-sm">
           <div className="bg-navy text-white px-6 py-5 text-center">
             <h2 className=" text-lg font-semibold tracking-widest uppercase">
@@ -83,7 +83,7 @@ export default function Termekek() {
           </div>
         </div>
 
-        {/* BLOKK 2 – FALIÓRA */}
+        {/* FALIÓRA */}
         <div className="rounded-2xl border border-navy/10 bg-slate-100 overflow-hidden shadow-sm">
           <div className="grid md:grid-cols-[160px_1fr] bg-deepnavy text-white">
             <div className="bg-navy flex items-center justify-center p-4">

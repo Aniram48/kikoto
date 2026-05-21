@@ -81,7 +81,7 @@ export default function Berles() {
 
       
 
-      {/* CARDS */}
+      {/* KÁRTYÁK */}
       
         <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 pt-6 pb-14">
         <div className="grid md:grid-cols-3 gap-6">
@@ -97,7 +97,7 @@ export default function Berles() {
                   : "bg-slate-50 border-slate-900/10"
               }`}
             >
-              {/* FEATURED TAG */}
+      
               {boat.featured && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-3 py-1 rounded-full font-bold tracking-widest uppercase">
                   Legnépszerűbb
@@ -109,7 +109,7 @@ export default function Berles() {
                 <boat.Icon className="w-6 h-6 text-slate-900 group-hover:text-white transition-colors" />
               </div>
 
-              {/* TITLE */}
+              {/* LEÍRÁS */}
               <h3 className="text-sm font-semibold tracking-widest text-slate-700 uppercase mb-3">
                 {boat.title}
               </h3>
@@ -124,7 +124,7 @@ export default function Berles() {
                 ))}
               </div>
 
-              {/* HOURS */}
+              {/* ÓRÁK */}
               <div className="flex items-center justify-between bg-slate-950/5 rounded-xl px-4 py-2 mb-6">
                 <span className="text-xs text-slate-600">Órák</span>
 
@@ -147,7 +147,7 @@ export default function Berles() {
                 </div>
               </div>
 
-              {/* PRICE */}
+              {/* ÁR */}
               <div className="text-center">
                 <div className="text-2xl font-bold text-slate-900">
                   {(boat.price * h).toLocaleString("hu-HU")} Ft
@@ -155,7 +155,7 @@ export default function Berles() {
                 <div className="text-xs text-slate-500">/ {h} óra</div>
               </div>
 
-              {/* BUTTON */}
+              {/* GOMB */}
               <a
                 href="tel:+36309786313"
                 className="block mt-6 text-center bg-slate-900 text-white py-3 rounded-xl text-xs font-bold tracking-widest uppercase hover:bg-slate-800 transition"
@@ -168,7 +168,7 @@ export default function Berles() {
       </div>
       </div>
 
-      {/* INFO */}
+      {/* INFÓ */}
       <div className="max-w-xl mx-auto mb-16 bg-slate-50 border border-slate-900/10 rounded-2xl p-8 text-center">
         <h3 className="text-slate-900 font-bold tracking-widest uppercase mb-4">
           Nyitvatartás

@@ -27,6 +27,7 @@ function VedettOldal({ children }) {
 export default function App() {
   return (
     <Routes>
+      {/* Home és menüpontok */}
       <Route path="/" element={<Home />} />
       <Route path="/bejelentkezes" element={<Bejelentkezes />} />
       <Route path="/regisztracio" element={<Regisztracio />} />

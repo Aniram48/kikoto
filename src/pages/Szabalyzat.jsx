@@ -70,7 +70,7 @@ export default function CsónakvezetesSzabalyai() {
         </div>
       </div>
 
-      {/* ACTION BAR */}
+      {/* MŰVELETI SÁV*/}
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 pt-6 pb-6">
         <div className="grid md:grid-cols-3 gap-4">
           {actions.map((a, i) => (
@@ -125,7 +125,7 @@ export default function CsónakvezetesSzabalyai() {
         </div>
       </div>
 
-      {/* MAIN CONTENT */}
+      {/* FŐ  */}
       <div className="max-w-4xl mx-auto px-6 py-6 space-y-4">
 
         {/* VIDEÓK */}
@@ -134,7 +134,7 @@ export default function CsónakvezetesSzabalyai() {
             key={i}
             className="bg-slate-50 border border-slate-900/10 rounded-2xl overflow-hidden"
           >
-            {/* Fejléc – kattintható */}
+            {/* FEJLÉC */}
             <button
               onClick={() => toggleVideo(i)}
               className="w-full flex items-center justify-between px-8 py-5 hover:bg-slate-900 hover:text-white transition group"
@@ -153,7 +153,7 @@ export default function CsónakvezetesSzabalyai() {
               />
             </button>
 
-            {/* Videó – csak nyitva látszik */}
+            {/* VIDEÓ – csak nyitva látszik */}
             {openVideos[i] && (
               <div className="px-8 pb-8">
                 <div className="aspect-video w-[50%] mx-auto rounded-xl overflow-hidden">

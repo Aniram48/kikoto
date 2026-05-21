@@ -8,7 +8,7 @@ import {
 import Navbar from '../components/Navbar'
 import WaveStrip from '../components/WaveStrip'
 
-// ─── adatok ──────────────────────────────────────────────────────────────────
+//ADATOK
 
 const TABS = [
   { id: 'tajek',    label: 'Tájékoztató' },
@@ -185,7 +185,7 @@ const TEMAKOROK = [
   },
 ]
 
-// ─── kis komponensek ──────────────────────────────────────────────────────────
+//  kis komponensek 
 
 function SectionLabel({ children }) {
   return (
@@ -287,7 +287,7 @@ function TemakörCard({ temakör }) {
   )
 }
 
-// ─── fő oldal ─────────────────────────────────────────────────────────────────
+//  FŐOLDAL
 
 export default function Hajoskonyv() {
   const [activeTab, setActiveTab] = useState('tajek')
@@ -336,7 +336,7 @@ export default function Hajoskonyv() {
       {/* Tartalom */}
       <div className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 pt-8 pb-20">
 
-        {/* ── TÁJÉKOZTATÓ ── */}
+        {/*  TÁJÉKOZTATÓ  */}
         {activeTab === 'tajek' && (
           <div className="flex flex-col gap-5">
             <div>
@@ -400,7 +400,7 @@ export default function Hajoskonyv() {
           </div>
         )}
 
-        {/* ── KÉPZÉS ── */}
+        {/*  KÉPZÉS  */}
         {activeTab === 'kepzes' && (
           <div className="flex flex-col gap-5">
             <div>
@@ -441,12 +441,7 @@ export default function Hajoskonyv() {
                 gyakorlati képzésből áll, három nap alatt kerül lebonyolításra.
               </p>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Az elméleti képzés anyaga oktató videóként a{' '}
-                <a href="https://www.autoinfo.hu" target="_blank" rel="noopener noreferrer"
-                   className="text-water underline underline-offset-2">
-                  www.autoinfo.hu
-                </a>{' '}
-                serveren érhető el. A megállapodás e-mailben való megküldése után az oktató videó
+                Az elméleti képzés anyaga oktató videóként a vizsga anyaga fül alatt érhető el. A megállapodás e-mailben való megküldése után az oktató videó
                 azonnal hozzáférhetővé válik.
               </p>
             </InfoCard>
@@ -515,7 +510,7 @@ export default function Hajoskonyv() {
           </div>
         )}
 
-        {/* ── DÍJAK ── */}
+        {/*  DÍJAK  */}
         {activeTab === 'koltseg' && (
           <div className="flex flex-col gap-5">
             <div>
@@ -575,7 +570,7 @@ export default function Hajoskonyv() {
           </div>
         )}
 
-        {/* ── VIZSGA ANYAGA ── */}
+        {/*  VIZSGA ANYAGA  */}
         {activeTab === 'vizsga' && (
           <div className="flex flex-col gap-4">
             <div>
@@ -592,7 +587,7 @@ export default function Hajoskonyv() {
           </div>
         )}
 
-        {/* ── KÖNYV KIVÁLTÁSA ── */}
+        {/*  KÖNYV KIVÁLTÁSA  */}
         {activeTab === 'kivaltas' && (
           <div className="flex flex-col gap-5">
             <div>
@@ -660,7 +655,7 @@ export default function Hajoskonyv() {
           </div>
         )}
 
-        {/* ── KAPCSOLAT ── */}
+        {/*  KAPCSOLAT  */}
         {activeTab === 'kapcsolat' && (
           <div className="flex flex-col gap-5">
             <div>

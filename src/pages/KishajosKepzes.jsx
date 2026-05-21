@@ -10,7 +10,7 @@ import Navbar from "../components/Navbar"
 import WaveStrip from '../components/WaveStrip'
 
 
-// ── Adatok ────────────────────────────────────────────────
+//  Adatok 
 
 const DATES = [
   { label: "Kezdés",           value: "2026. 04. 24. péntek",   highlight: true },
@@ -117,7 +117,7 @@ const DOCS = [
   { label: "Vitorlás szakszavak jelentése", href: "https://autoinfo.hu/szvk/wp-content/uploads/2020/02/vitorlas_szakszavak_jelentese.pdf" },
 ]
 
-// ── localStorage ──────────────────────────────────────────
+//  localStorage 
 
 const LS_KEY = "kishajos_lepesek_kesz"
 const LS_PROGRESS = "kishajos_progress"
@@ -142,7 +142,7 @@ function getCompleted() {
   }
 }
 
-// ── Kisebb komponensek ─────────────────────────────────────
+//  Kisebb komponensek 
 
 function SectionLabel({ children }) {
   return (
@@ -222,7 +222,7 @@ function TestRow({ item, btnLabel = "Kezdés" }) {
   )
 }
 
-// ── Lépés sor ─────────────────────────────────────────────
+//  Lépés sor 
 
 function StepRow({ step, index, completed, navigate }) {
   const stepNum = index + 1
@@ -265,7 +265,7 @@ function StepRow({ step, index, completed, navigate }) {
   )
 }
 
-// ── Fő oldal ──────────────────────────────────────────────
+//  Fő oldal 
 
 const TABS = [
   { id: "menet",  label: "Tájékoztató",   Icon: List },
@@ -302,7 +302,6 @@ export default function KishajoKepzes() {
     return () => window.removeEventListener("focus", refresh)
   }, [])
 
-  // ← NAPLO_CARDS itt van, ahol a progress state már elérhető
   const NAPLO_CARDS = [
     { key: "szabalyzat", title: "Hajózási szabályzat" },
     { key: "kisgephajo", title: "Kisgéphajó" },

@@ -42,7 +42,7 @@ export default function Navbar() {
                  bg-navy/95 backdrop-blur-md border-b border-accent/20
                  shadow-[0_2px_24px_rgba(0,0,0,0.4)]"
     >
-      {/* Logo + Title */}
+      {/* Logó */}
       <div
         onClick={() => handleNav('/')}
         className="flex items-center gap-3 cursor-pointer shrink-0"

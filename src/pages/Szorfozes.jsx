@@ -39,7 +39,7 @@ export default function Szorfozes() {
           />
       </div>
 
-      {/* CONTENT */}
+      {/* SZÖVEG */}
       <div className="max-w-4xl mx-auto px-6 py-14 space-y-8">
 
         <div className="bg-slate-50 border border-slate-900/10 rounded-2xl p-8 leading-relaxed text-slate-700">
@@ -72,13 +72,13 @@ export default function Szorfozes() {
           </p>
         </div>
 
-        {/* WARNING / INFO BOX */}
+        {/* FIGYELMEZTETÉS  */}
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-amber-900 text-sm leading-relaxed">
           ⚠️ A vízi sportok – így a szörfözés is – alapvetően veszélyes tevékenységnek számítanak.
           A biztonságos gyakorláshoz ajánlott az oktatáson való részvétel.
         </div>
 
-        {/* CONTACT */}
+        {/* KAPCSOLAT */}
         <div className="bg-slate-50 border border-slate-900/10 rounded-2xl p-8">
           <h3 className="text-sm font-semibold tracking-widest uppercase mb-4 text-slate-700">
             Jelentkezés

@@ -5,7 +5,7 @@ import { List, Anchor, Ship, Users, Navigation, FileDown, Play, CheckSquare, Tro
 import Navbar from "../components/Navbar"
 import WaveStrip from '../components/WaveStrip'
 
-// ── Adatok ────────────────────────────────────────────────
+//  Adatok 
 
 const DOCS = [
   {
@@ -80,7 +80,7 @@ const VIDEO_GROUPS = [
   },
 ]
 
-// ── Kisebb komponensek ─────────────────────────────────────
+//  Kisebb komponensek 
 
 function SectionLabel({ children }) {
   return (
@@ -117,7 +117,7 @@ function TestRow({ item, btnLabel = "Kezdés", navigate }) {
   )
 }
 
-// ── Díjtáblázat ───────────────────────────────────────────
+//  Díjtáblázat 
 
 function DijTablazat() {
   return (
@@ -176,10 +176,10 @@ function VideoAccordion({ group }) {
   )
 }
 
-// ── Fő oldal ──────────────────────────────────────────────
+//  Fő oldal 
 
 export default function TengeriKepzes() {
-  // Ha useNavigate kell a tesztekhez, importáld és add hozzá
+  
   const navigate = (route) => window.location.href = route
 
   const [activeTab, setActiveTab] = useState("tajekoztato")
@@ -241,7 +241,6 @@ export default function TengeriKepzes() {
               </p>
               <p>
                 Az előadások témái: Navigáció, térképek, menetszabályok, jelzések, rádiózás, vízből mentés, tűzoltás, meteorológia, környezetvédelem.
-                {/* ← ide illeszd a teljes bekezdést */}
               </p>
               <p>
                 Az elméleti képzés <span className="font-semibold">távoktatással</span> történik.
@@ -253,7 +252,6 @@ export default function TengeriKepzes() {
                 <span className="font-semibold">kedvtelési célú IV. osztályú tengeri kishajó-vezető bizonyítványt</span> kapnak.
               </p>
               <p>
-                {/* ide: jogosultság leírása, méretek, stb. */}
                 A képesítés tengeren a parttól <span className="font-semibold">3 tengeri mérföld</span> távolságon belül, illetve belvízen történő kishajó vezetésére jogosít. 
                 A tengeri kisgéphajó és vitorlás kishajó teljes hossza a  24 métert, a belvízi kisgéphajó és vitorlás kishajó teljes hossza a  20 métert nem érheti el, utas befogadó képessége legfeljebb  12 fő lehet.
               </p>
@@ -383,7 +381,6 @@ export default function TengeriKepzes() {
               <SectionLabel>Okmány kiváltása</SectionLabel>
               <div className="bg-white border border-slate-200 rounded-2xl p-6 text-sm text-slate-700 leading-relaxed space-y-3">
                 <p>
-                  {/* ide illeszd a "Szegeden a vizsgaeredmények..." bekezdést */}
                   Az okmánykiadási kérelem benyújtása az eredményes elméleti vizsga után történhet. Szegeden minden héten <span className="font-semibold">kedden, 13:00–15:00</span> között a Kormányablakban van lehetőség a kérelem benyújtására.
                 </p>
                 <ul className="space-y-1 text-slate-600">

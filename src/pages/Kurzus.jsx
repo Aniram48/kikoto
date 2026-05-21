@@ -299,17 +299,17 @@ export default function Kurzus() {
         <img
           src="/boat.png"
           alt="boat"
-        className="
-          absolute
-          right-0 md:right-4 lg:right-24 xl:right-44
-          -bottom-4 md:-bottom-6
-          w-20 md:w-20 lg:w-28 xl:w-44
-          h-auto
-          animate-boat
-          pointer-events-none
-          opacity-90
-        "
-        />
+          className="
+            absolute
+            right-0 md:right-4 lg:right-24 xl:right-44
+            -bottom-4 md:-bottom-6
+            w-20 md:w-20 lg:w-28 xl:w-44
+            h-auto
+            animate-boat
+            pointer-events-none
+            opacity-90
+          "
+          />
           
       </div>
 
