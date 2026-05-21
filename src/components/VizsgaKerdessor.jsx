@@ -127,6 +127,32 @@ const CIMEK = {
   vitorlas: "Hajózási ismeretek – Vitorlás kishajó",
 }
 
+function saveTestResult(type, correct, wrong) {
+  const progress = getProgress()
+
+  progress[type] = {
+    answered: correct + wrong,
+    correct,
+    wrong,
+    lastScore: Math.round((correct / (correct + wrong)) * 100),
+    lastPlayed: new Date().toISOString()
+  }
+
+  saveProgress(progress)
+}
+const LS_KEY = "kishajos_progress"
+
+function getProgress() {
+  try {
+    return JSON.parse(localStorage.getItem(LS_KEY) || "{}")
+  } catch {
+    return {}
+  }
+}
+
+function saveProgress(data) {
+  localStorage.setItem(LS_KEY, JSON.stringify(data))
+}
 
 export default function VizsgaKerdessor({ tipus: tiusProp, proba }) {
   const { tipus: tipusParam } = useParams()
@@ -228,6 +254,12 @@ export default function VizsgaKerdessor({ tipus: tiusProp, proba }) {
   const helyes_db = Object.values(allapot).filter((v) => v === "helyes").length
   const hibas_db = Object.values(allapot).filter((v) => v === "hibas").length
   const valasz_db = helyes_db + hibas_db
+
+    useEffect(() => {
+    if (osszesito) {
+      saveTestResult(tipus, helyes_db, hibas_db)
+    }
+  }, [osszesito])
 
   return (
     <div className="min-h-screen bg-slate-300 text-slate-950">
