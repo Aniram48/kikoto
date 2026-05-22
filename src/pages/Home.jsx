@@ -272,7 +272,7 @@ export default function App() {
           className="absolute inset-0 w-full h-full object-cover brightness-75 saturate-90 z-0"
           autoPlay muted loop playsInline
         >
-          <source src="/drone.mp4" type="video/mp4" />
+          <source src="/dron.mp4" type="video/mp4" />
         </video>
 
         {/* Navbar */}
